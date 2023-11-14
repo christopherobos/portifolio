@@ -124,27 +124,27 @@
                                             <div class="facts-list owl-carousel">
                                                 <!-- <div class="item animate" data-animate="fadeInUp">
                                                     <div class="counter-box">
-                                                        <i class="fa fa-trophy counter-icon" aria-hidden="true"></i><span class="count-number">32</span> Awards Won
+                                                        <i class="fa fa-trophy counter-icon" aria-hidden="true"></i><span class="counter count-number">32</span> Awards Won
                                                     </div>
                                                 </div> -->
                                                 <div class="item animate" data-animate="fadeInUp">
                                                     <div class="counter-box">
-                                                        <i class="fa fa-code counter-icon"aria-hidden="true"></i><span class="count-number">5</span> Websites
+                                                        <i class="fa fa-code counter-icon"aria-hidden="true"></i><span class="counter count-number">5</span> Websites
                                                     </div>
                                                 </div>
                                                 <div class="item animate" data-animate="fadeInUp">
                                                     <div class="counter-box">
-                                                        <i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span class="count-number">1</span> Working Years
+                                                        <i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span class="counter count-number">1</span> Working Years
                                                     </div>
                                                 </div>
                                                 <div class="item animate" data-animate="fadeInUp">
                                                     <div class="counter-box">
-                                                        <i class="fa fa-support counter-icon" aria-hidden="true"></i><span class="count-number">2</span> Team Members
+                                                        <i class="fa fa-support counter-icon" aria-hidden="true"></i><span class="counter count-number">2</span> Team Members
                                                     </div>
                                                 </div>
                                                 <div class="item animate" data-animate="fadeInUp">
                                                     <div class="counter-box">
-                                                        <i class="fa fa-certificate counter-icon" aria-hidden="true"></i><span class="count-number">3</span> Certificates
+                                                        <i class="fa fa-certificate counter-icon" aria-hidden="true"></i><span class="counter count-number">3</span> Certificates
                                                     </div>
                                                 </div>
                                             </div>
@@ -614,6 +614,31 @@
             </div>
         </div>
     </div>  
+
+        <script>
+            const { set } = require("express/lib/application");
+
+const $counters = document.querySelectorAll('.counter');
+
+$counters.forEach(($counter) => {
+    $counter.innerHTML = '0';
+    const updateCounter = () => {
+        const target = Number($counter.getAttribute('data-target'),
+        );
+        const count = Number($counter.innerHTML);
+        const increment = target / 200;
+        if (count < target) {
+            $counter.innerHTML = `${Math.ceil(count + increment)}`;
+            setTimeout(updateCounter, 20);
+        } else {
+            $counter.innerHTML = target;
+        }
+    };
+
+    
+    updateCounter();
+});
+        </script>
 
     <script src="jquery.js"></script>
 
